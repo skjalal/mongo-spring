@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: mongo-spring
+  profiles:
+    active:
+      - dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - logger
+          - shutdown
+  endpoint:
+    shutdown:
+      enabled: true
+server:
+  shutdown: graceful
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            core:
+              MongoTemplate: debug
