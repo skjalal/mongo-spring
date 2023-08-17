@@ -4,6 +4,12 @@ spring:
   profiles:
     active:
       - dev
+  security:
+    user:
+      name: root
+      password: root
+      roles:
+        - ADMIN
 management:
   endpoints:
     web:
@@ -12,11 +18,12 @@ management:
           - info
           - health
           - logger
-          - shutdown
   endpoint:
     shutdown:
       enabled: true
 server:
+  servlet:
+    context-path: /api
   shutdown: graceful
 logging:
   level:

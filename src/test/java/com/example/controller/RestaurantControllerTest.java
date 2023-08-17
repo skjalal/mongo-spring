@@ -18,6 +18,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.LinkedMultiValueMap;
 
@@ -38,6 +39,7 @@ class RestaurantControllerTest {
     when(restaurantService.findAllRestaurants(any(Pagination.class))).thenReturn(new ResponseDTO());
   }
 
+  @WithMockUser
   @ParameterizedTest
   @ValueSource(strings = {"/api", "/api/", "/api/all"})
   void testFindAll(String url) throws Exception {
