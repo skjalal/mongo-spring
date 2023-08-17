@@ -1,5 +1,5 @@
 spring:
   data:
     mongodb:
-      uri: mongodb+srv://skjalal:DZW8Udd6qDevJPLS@mongoatlas.ors9s0n.mongodb.net/admin?retryWrites=true&replicaSet=atlas-f268rs-shard-0&readPreference=primary&srvServiceName=mongodb&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1
+      uri: mongodb+srv://skjalal:${PASSWORD}@mongoatlas.ors9s0n.mongodb.net/admin?retryWrites=true&replicaSet=atlas-f268rs-shard-0&readPreference=primary&srvServiceName=mongodb&connectTimeoutMS=10000&authSource=admin&authMechanism=SCRAM-SHA-1
       database: sample_restaurants
