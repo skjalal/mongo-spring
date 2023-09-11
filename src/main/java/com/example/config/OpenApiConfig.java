@@ -1,5 +1,10 @@
 package com.example.config;
 
+import static java.net.URI.create;
+import static org.springframework.web.servlet.function.RequestPredicates.GET;
+import static org.springframework.web.servlet.function.RouterFunctions.route;
+import static org.springframework.web.servlet.function.ServerResponse.temporaryRedirect;
+
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -10,11 +15,18 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.function.RouterFunction;
+import org.springframework.web.servlet.function.ServerResponse;
 
 @Configuration
 public class OpenApiConfig {
 
   private static final String SCHEMA_NAME = "basicAuth";
+
+  @Bean
+  public RouterFunction<ServerResponse> routerFunction() {
+    return route(GET("/"), request -> temporaryRedirect(create("/swagger-ui/index.html")).build());
+  }
 
   @Bean
   public OpenAPI openAPI() {

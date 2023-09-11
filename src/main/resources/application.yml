@@ -22,8 +22,6 @@ management:
     shutdown:
       enabled: true
 server:
-  servlet:
-    context-path: /api
   shutdown: graceful
 logging:
   level:
