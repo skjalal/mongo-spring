@@ -32,7 +32,7 @@ jobs:
           git config user.email "<>"
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v4
+        uses: gradle/gradle-build-action@v3
 
       - name: Execute Gradle build
         run: gradle build release
