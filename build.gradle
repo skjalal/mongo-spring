@@ -2,10 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
+    id 'net.researchgate.release' version '3.0.2'
 }
-
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
 
 java {
     sourceCompatibility = jdkVersion
@@ -47,4 +45,27 @@ tasks.named('compileJava') {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+release {
+    failOnCommitNeeded = true
+    failOnPublishNeeded = true
+    failOnSnapshotDependencies = true
+    failOnUnversionedFiles = true
+    failOnUpdateNeeded = true
+    revertOnFail = true
+    preCommitText = ''
+    preTagCommitMessage = '[Gradle Release Plugin] - pre tag commit: '
+    tagCommitMessage = '[Gradle Release Plugin] - creating tag: '
+    newVersionCommitMessage = '[Gradle Release Plugin] - new version commit: '
+    tagTemplate = '${version}'
+    versionPropertyFile = 'gradle.properties'
+    versionProperties = []
+    snapshotSuffix = '-SNAPSHOT'
+    buildTasks = []
+    ignoredSnapshotDependencies = []
+
+    git {
+        requireBranch.set('main')
+    }
 }
